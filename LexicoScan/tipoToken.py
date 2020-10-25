@@ -1,0 +1,71 @@
+from enum import Enum
+
+class TipoToken(Enum):
+
+    # Palavras reservadas da linguagem.
+
+    # RES_FIM = ("fim", "reservada")
+    RES_BOOLEANO = ("booleano", "reservada")
+    RES_INTEIRO = ("inteiro", "reservada")
+    RES_CHAR = ("char", "reservada")
+    RES_VERDADE = ("verdadeiro", "reservada")
+    RES_FALSO = ("falso","reservada")
+    RES_PROGRAMA = ("programa", "reservada")
+    RES_INICIO = ("inicio", "reservada")
+    RES_ESCREVA = ("escreva", "reservada")
+    RES_ERROS = ("erros", "reservada")
+    RES_SE = ("se", "reservada")
+    RES_ENTAO = ("entao","reservada")
+    RES_ENQUANTO = ("enquanto", "reservada")
+    RES_IMPORTA = ("importa","reservada")
+    RES_HERDA = ("herda_de", "reservada")
+    RES_INSTANCIA_DE = ("instancia_de","reservada")
+    RES_NOVO = ("novo", "reservada")
+    RES_NULO = ("nulo", "reservada")
+    RES_CLASSE = ("classe", "reservada")
+    RES_PACOTE = ("pacote", "reservada")
+    RES_PRIVADO = ("privado", "reservada")
+    RES_PROTEGIDO = ("protegido", "reservada")
+    RES_PUBLICO = ("publico", "reservada")
+    RES_ABSTRATO = ("abstrato", "reservada")
+    RES_RETORNA = ("retorna", "reservada")
+    RES_ESTATICO = ("estatico", "reservada")
+    RES_SUPERIOR = ("superior", "reservada")
+    RES_DESTA = ("desta", "reservada")
+    RES_VAZIO = ("vazio", "reservada")
+
+	# Separadores de argumantos.
+    S_VIRGULA = (",", "separador")
+    S_PONTO = (".", "separador")
+    S_PONTO_E_VIRGULA = (";", "separador")
+    S_ABRE_PARENTESE = ("(","separador")
+    S_FECHA_PARENTESE = (")","separador")
+    S_ABRE_CHAVES = ("{", "separador")
+    S_FECHA_CHAVE = ("}","separador")
+    S_ABRE_COLCHETE = ("[", "separador")
+    S_FECHA_COLCHETE = ("]","separador")
+
+    # Operadores matematicos.
+    O_MENOS = ("-", "operador")
+    O_SOMA = ("+", "operador")
+    O_MULTIPLICA = ("*", "operador")
+    O_DIVISAO = ("/", "operador")
+    O_IGUAL = ("==", "operador")
+    O_MAIOR = (">", "operador")
+    O_MENOR = ("<", "operador")
+    O_INCREMENTO = ("++", "operador")
+    O_E = ("&&", "operador")
+    O_MENOR_IGUAL = ("<=", "operador")
+    O_MAIOR_IGUAL = (">=", "operador")
+    O_RECEBE_E_SOMA = ("+=", "operador")
+    O_RECEBE_E_SUBTRAI = ("-=", "operador")
+    O_NAO = ("!", "operador")
+    O_DECREMENTO = ("--", "operador")
+    O_ATRIBUI = ("=", "operador")  #:= !!!!!!!!!!!!!!!!!!!!!!
+    O_OU = ("or", "operador")
+
+    # Variaveis gerais e classes de tipos.
+    C_VARIAVEL = ("variavel_classe", "Variavel")
+    C_CHAR_CLASSE = ("char_classe", "Char")
+    C_CADEIA_CHAR = ("cadeia_classe", "String")
+    C_INTEIRO_CLASSE = ("Inteiro_classe", "Int")

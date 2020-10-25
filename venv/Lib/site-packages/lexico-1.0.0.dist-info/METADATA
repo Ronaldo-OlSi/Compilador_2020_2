@@ -1,0 +1,26 @@
+Metadata-Version: 2.0
+Name: lexico
+Version: 1.0.0
+Summary: Your personal vocabulary
+Home-page: https://github.com/kshitij10496/lexico
+Author: Kshitij Saraogi
+Author-email: kshitijsaraogi@gmail.com
+License: MIT
+Download-URL: https://github.com/kshitij10496/lexico/releases/tag/v1.0.0
+Description-Content-Type: UNKNOWN
+Keywords: vocabulary command-line
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.5
+Requires-Dist: Click
+Requires-Dist: arrow
+Requires-Dist: requests
+Requires-Dist: tabulate
+Requires-Dist: wordnik-py3
+
+UNKNOWN
+
+
