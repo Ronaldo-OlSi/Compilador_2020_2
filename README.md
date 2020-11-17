@@ -50,3 +50,4 @@ https://www.w3schools.com/java/java_hashmap.asp
 https://codereview.stackexchange.com/questions/183112/hashmap-implementation-in-python
 https://www.tutorialspoint.com/python_data_structure/python_hash_table.htm
 https://www.geeksforgeeks.org/python-3-6-dictionary-implementation-using-hash-tables/# Analizador_lexico_compiladores_2020_2
+# Analisador
