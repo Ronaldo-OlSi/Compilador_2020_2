@@ -1,56 +1,64 @@
 pacote exemplos LPD;
 importa linguagem.idioma;
 
-//comentario teste. não aparecerá na lista de tokens
+{comentario teste. nao aparecera na lista de tokens}
+//comentario teste. nao aparecera na lista de tokens
 
-programa{
+programa()
 	
-publico classe herda_de outra (){
+publico classe herda_de outra ()
 
 	inteiro sa = 89;
 	soma += 145;
     soma -= 273;
 	div = 20 / 4;
+	soma <= 145;
+	soma >= 145;
+	soma ? 145;
+	soma < 145;
+	soma ? 145;
+	soma -= 145;
+	
     retorna soma, div;
-}
 
-abstrato classe herda_de Sequencia(){
+
+abstrato classe herda_de Sequencia()
 
     publico estatico inteiro ARIT = 15;   
     publico estatico inteiro GEOM = 27;
     
-    private inteiro w; // termo 1
-    private inteiro n; // quantidade de termos
+    private inteiro w; { termo 1}
+    private inteiro n; {quantidade de termos}
 	
 	escreva("Uma cadeia 'char' entre aspas");
     
-    publico Sequencia() {
+    publico Sequencia();
 	
         desta(1, 16, 10);
 		booleano ident1 = verdadeiro;
 		booleano ident2 = falso;		
-    }   
-    publico Sequencia(inteiro a, inteiro n) {
+       
+    publico Sequencia(inteiro a, inteiro n) 
 	
         desta.w = w;
         desta.n = n;
 		escreva(erros.vazio);
-    }
     
-    publico inteiro compsoma(inteiro tipo) {
+    
+    publico inteiro compsoma(inteiro tipo); 
         inteiro soma = w, x = w, i = n;
-        enquanto (i-- > 1) {
-        se (tipo == GEOM) {
+        enquanto (i-- > 1) 
+        se (tipo == GEOM) 
             x += d;
-        } entao se (tipo == ARIT) {
+         entao se (tipo == ARIT) 
             x = x * d;
-        }
+        
             soma += x;
-        }
+        
         retorna soma;
-    }
+    
 	
-	publico statico vazio inicio(cadeia_classe[]){
+	publico statico vazio inicio(cadeia_classe[]);
 
         inteiro w = Inteiro_classe.analisa([0]);
         inteiro d = Inteiro_classe.analisa([1]);
@@ -59,12 +67,12 @@ abstrato classe herda_de Sequencia(){
 		
         Sequencia s = new Sequencia(w, d);
         escreva("Arit soma = " + s.compsoma(Sequencia.ARIT));       
-    }	
-}
-}
+    	
 
 
-public class Series {
+
+
+public class Series 
     public static int ARITHMETIC = 1; // comentario char nois 
     
 

@@ -1,0 +1,20 @@
+programa calcula_expressao;
+
+var 
+
+	x, y, z: inteiro;
+	r: inteiro;
+
+{ "Este e um comentario" }
+
+inicio 
+
+	x := 3;
+	y := 5;
+	r := (x + 7) * y;
+
+    escreva r;
+	escreva 5;
+	escreva 2 + 2;
+
+fim.
