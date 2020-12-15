@@ -5,17 +5,12 @@ from lerArquivos import Ler_Arquivos
 from criaTabela_Resultado import organizaTabela
 from abc import abstractmethod
 
-class Parser(object): #Classe abstrata 'pai'
-    #CLASSE ABSTRACT
-    # __metaclass__ =
+class Parser(object): # Classe abstrata
 
-    ts = 0
-    Lexer3 = 0
-    Token = 0
-
-    def __init__(self, ts, lexer):  # Construtor abstrato.
+    def __init__(self, ts, lexeco, token):  # Construtor abstrato.
         self.ts = ts
-        self.lexer = lexer
+        self.lexer = lexeco
+        self.token = token
 
     @abstractmethod
     def busca_Token(self):
@@ -25,18 +20,89 @@ class Parser(object): #Classe abstrata 'pai'
     def parse(self):
         pass
 
+    @abstractmethod
+    def erro(self):
+        linha = 1
+        coluna = 0
+
+        print("erro, linha" + linha + "coluna" + coluna )
+
 
 class PPR:
 
-    def buscaToken(self):           # Busca tokens e suas posiçoes.
+
+    def parse(self):
+
+        try:
+            # Busca o nome do programa
+            ind_linha = 0
+            while (ind_linha < 1):
+
+                ind_coluna = 0
+                while (ind_coluna < len(self.arqLinhas[ind_linha])):
+
+                    print("\n      --- Nome do Programa '", self.sequencia_Simbolos[0], "'---\n")
+
+                    ind_linha = 1
+                    break
+        except:
+            print("Erro na busca pelo nome do programa")
+
+        # Busca Variaveis repetidas
+        try:
+            words = self.arqLinhas
+            encontradas = set()
+            dups = set()
+            ind_linha = 0
+            for word in words:
+                ind_linha += 1
+                if word in encontradas:
+                    if word not in dups:
+                        if word == '':  # ignorara os espaços em branco repetidos!
+                            pass
+                            dups.add(word)
+                        else:
+                            print("Variavel em duplicadade na linha", ind_linha, ", sentença =", word, "\n")
+                else:
+                    encontradas.add(word)
+        except:
+            print("Erro Sintatico. Variavel em duplicadade")
+
+        # Percorre todos os caracteres para a analise de balanceamento
+        ind_linha = 0
+        while (ind_linha < len(self.arqLinhas)):
+            ind_coluna = 0
+            while (ind_coluna < len(self.arqLinhas[ind_linha])):
+
+                # Salva a posição do caractere e seu valor
+                caractere = self.arqLinhas[ind_linha][ind_coluna]
+                ind_coluna += 1
+            ind_linha += 1
+
+            exp = str(caractere)
+            abertos = 0
+            for c in exp:
+                if c == '(':
+                    abertos += 1
+                elif c == ')':
+                    abertos -= 1
+                    if abertos < 0:
+                        break
+                if abertos == 0:
+                    pass
+                else:
+                    print('Erro, Parenteses desbalanceados. linha', ind_linha)
+
+    def buscaToken(self):  # Busca tokens e suas posiçoes.
 
         ind_linha = 0
         while (ind_linha < len(self.arqLinhas)):
             ind_coluna = 0
             while (ind_coluna < len(self.arqLinhas[ind_linha])):
+                # Salva a posição do caractere e seu valor
                 caractere = self.arqLinhas[ind_linha][ind_coluna]
 
-                # Testa se é um tipo de comentario ex: //bla bla bla
+                # Testa se é um tipo de comentario ex: //bla bla bla, comentario...
                 if caractere == '/':
                     if self.indice_Valid_Col(ind_linha, ind_coluna + 1):
                         chr1 = self.arqLinhas[ind_linha][ind_coluna + 1]
@@ -103,7 +169,7 @@ class PPR:
 
                         error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "Não fechamento de Parenteses.")
 
-                        # Se neste ponto for 'true' é uma estrutura multi-linhas.
+                    # Se neste ponto for 'true' é uma estrutura multi-linhas.
                     if caractere == '\'':
                         if self.indice_Valid_Col(ind_linha, ind_coluna + 1):
                             chr1 = self.arqLinhas[ind_linha][ind_coluna + 1]
@@ -120,7 +186,6 @@ class PPR:
 
                                         else:
                                             error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "")
-
                                     else:
                                         error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "")
                                 else:
@@ -137,13 +202,13 @@ class PPR:
 
                                     else:
                                         error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "não e um char classe")
-
                             else:
                                 error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "não e um char classe")
                         else:
                             error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "não e um char classe, fim de linha")
                 except:
                     print("Erro sintatico, fechamento de 'Parenteses'")
+                    error = Erro_rastreio(ind_linha - 2, ind_coluna, "sintatico", "Não fechamento de Parenteses.")
                     break
 
                 # Testa se é uma string classe, Verifica se o primeiro char tem  aspas duplas
@@ -186,8 +251,7 @@ class PPR:
 
                         error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "Quebra de linha dentro de uma string")
 
-                        # Se neste ponto for 'true' é uma string multi-linhas.
-
+                     # Se neste ponto for 'true' é uma string multi-linhas.
                     if caractere == '\'':
                         if self.indice_Valid_Col(ind_linha, ind_coluna + 1):
                             chr1 = self.arqLinhas[ind_linha][ind_coluna + 1]
@@ -228,6 +292,82 @@ class PPR:
                             error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "não e um char classe, fim de linha")
                 except:
                     print("Erro sintatico, fechamento de 'Aspas'")
+                    break
+
+                try:
+                    # Analisando expressoes matematicas
+                    list_expr = []
+                    if caractere == '+':
+                        op1 = caractere
+                        num1 = caractere = self.arqLinhas[ind_linha][ind_coluna -2]
+                        num2 = caractere = self.arqLinhas[ind_linha][ind_coluna +2]
+                        res1 = int(num1) + int(num2)
+                        list_expr = [num1, op1, num2, "=", res1]
+
+                    if caractere == '-':
+                        op2 = caractere
+                        num3 = caractere = self.arqLinhas[ind_linha][ind_coluna - 2]
+                        num4 = caractere = self.arqLinhas[ind_linha][ind_coluna + 2]
+                        res2 = int(num3) - int(num4)
+                        list_expr = [num3, op2, num4, "=", res2]
+
+                    if caractere == '/':
+                        op3 = caractere
+                        num5 = caractere = self.arqLinhas[ind_linha][ind_coluna - 2]
+                        num6 = caractere = self.arqLinhas[ind_linha][ind_coluna + 2]
+                        res3 = int(num5) / int(num6)
+                        list_expr = [num5, op3, num6, "=", res3]
+
+                    if caractere == '*':
+                        op4 = caractere
+                        num7 = caractere = self.arqLinhas[ind_linha][ind_coluna - 2]
+                        num8 = caractere = self.arqLinhas[ind_linha][ind_coluna + 2]
+                        res4 = int(num7) * int(num8)
+                        list_expr = [num7, op4, num8, "=", res4]
+
+                    '''if list_expr != []:
+                        sem_esp = list_expr
+                        print(sem_esp)'''
+
+                    # Salvando em arquivo
+
+                    if list_expr != []:
+                        sem_esp = list_expr
+                        f = open("resultados_analisados/lista_expressao.txt", "a")
+                        f.write(str(sem_esp))
+                        f.write(str("\n"))
+                        f.close()
+
+
+                        for c in range(len(sem_esp)):
+                                if sem_esp[c] == 1 or sem_esp[c] == 2 or sem_esp[c] == 3\
+                                        or sem_esp[c] == 4 or sem_esp[c] == 5 or sem_esp[c] == 6\
+                                        or sem_esp[c] == 7 or sem_esp[c] == 8 or sem_esp[c] == 9\
+                                        or sem_esp[c] == 0 or sem_esp[c] == '1' or sem_esp[c] == '2'\
+                                        or sem_esp[c] == '3' or sem_esp[c] == '4' or sem_esp[c] == '5' \
+                                        or sem_esp[c] == '6' or sem_esp[c] == '7' or sem_esp[c] == '8' \
+                                        or sem_esp[c] == '9' or sem_esp[c] == '0':pass
+
+                                '''print("%", c + 1, '= alloca i32, align 4')
+                                print("store i32", sem_esp[c], ', i32*', c + 1, ', align 4')'''
+
+
+                                codigo = "%", c + 1, '= alloca i32, align 4'
+                                f = open("resultados_analisados/codigo.txt", "a")
+                                f.write(str(codigo))
+                                f.write(str("\n"))
+                                f.close()
+
+                                codigo = "store i32", sem_esp[c], ', i32*', c + 1, ', align 4'
+                                f = open("resultados_analisados/codigo.txt", "a")
+                                f.write(str(codigo))
+                                f.write(str("\n"))
+                                f.close()
+
+
+                except:
+                    print("Erro semantico, fechamento de 'expressão aritimetica'")
+                    error = Erro_rastreio(ind_linha - 2, ind_coluna, "semantico", "expressao.")
                     break
 
                 # Testa se abre e fecha colchetes corretamente
@@ -271,7 +411,7 @@ class PPR:
 
                         error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "Não fechamento de colchete.")
 
-                        # Se neste ponto for 'true' é uma estrutura multi-linhas.
+                    # Se neste ponto for 'true' é uma estrutura multi-linhas.
                     if caractere == '\'':
                         if self.indice_Valid_Col(ind_linha, ind_coluna + 1):
                             chr1 = self.arqLinhas[ind_linha][ind_coluna + 1]
@@ -290,7 +430,6 @@ class PPR:
 
                                         else:
                                             error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "")
-
                                     else:
                                         error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "")
                                 else:
@@ -309,7 +448,6 @@ class PPR:
                                     else:
                                         error = Erro_rastreio(ind_linha, ind_coluna, "sintatico",
                                                               "não e um char classe")
-
                             else:
                                 error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "não e um char classe")
                         else:
@@ -317,6 +455,7 @@ class PPR:
                                                   "não e um char classe, fim de linha")
                 except:
                     print("Erro sintatico, fechamento de 'colchetes'")
+                    error = Erro_rastreio(ind_linha - 2, ind_coluna, "semantico", "expressao.")
                     break
 
                 # Testa se abre e fecha chaves corretamente.
@@ -360,7 +499,7 @@ class PPR:
 
                         error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "Não fechamento de chaves.")
 
-                        # Se neste ponto for 'true' é uma estrutura multi-linhas.
+                    # Se neste ponto for 'true' é uma estrutura multi-linhas.
                     if caractere == '\'':
                         if self.indice_Valid_Col(ind_linha, ind_coluna + 1):
                             chr1 = self.arqLinhas[ind_linha][ind_coluna + 1]
@@ -379,7 +518,6 @@ class PPR:
 
                                         else:
                                             error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "")
-
                                     else:
                                         error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "")
                                 else:
@@ -389,7 +527,7 @@ class PPR:
                                 if self.indice_Valid_Col(ind_linha, ind_coluna + 2):
                                     chr2 = self.arqLinhas[ind_linha][ind_coluna + 2]
                                     if chr2 == '\'':
-                                        self.cria_Token(self.literal["char_classe"], caractere + chr1 + chr2,
+                                        self.cria_Token(self.literal["Inteiro_classe"], caractere + chr1 + chr2,
                                                         ind_linha,
                                                         ind_coluna + 1)
                                         ind_coluna += 2
@@ -398,7 +536,6 @@ class PPR:
                                     else:
                                         error = Erro_rastreio(ind_linha, ind_coluna, "sintatico",
                                                               "não e um char classe")
-
                             else:
                                 error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "não e um char classe")
                         else:
@@ -406,6 +543,7 @@ class PPR:
                                                   "não e um char classe, fim de linha")
                 except:
                     print("Erro sintatico, fechamento de 'chaves'")
+                    error = Erro_rastreio(ind_linha - 2, ind_coluna, "semantico", "expressao.")
                     break
 
                 # Testa se encontrou um identificador
@@ -429,7 +567,8 @@ class PPR:
                     print("Erro Sintatico de indentificador")
                     error = Erro_rastreio(ind_linha, ind_coluna, "sintatico", "")
 
-                # Testa se é um numero
+
+                # Testa se é um numero e adiciona o tipo
                 try:
                     if self.numero_Ident(caractere):
                         ini_Lexema = ind_coluna
@@ -454,7 +593,11 @@ class PPR:
                                 else:
                                     caractere = None
                             lexema = self.arqLinhas[ind_linha][ini_Lexema:ind_coluna]
+
                             self.cria_Token(self.literal["Inteiro_classe"], lexema, ind_linha, ini_Lexema)
+                            #print(lexema)
+
+
                             continue
                 except:
                     print("Erro Sintatico em teste de numeros")
@@ -614,7 +757,7 @@ class PPR:
                           "inicio": TipoToken.RES_INICIO, "escreva": TipoToken.RES_ESCREVA,
                           "erros": TipoToken.RES_ERROS, "var": TipoToken.RES_VAR_CAMPO,
                           "fim": TipoToken.RES_FIM_PROGRAMA, "faca": TipoToken.RES_FACA, "senao": TipoToken.RES_SENAO,
-                          "leia": TipoToken.RES_LEIA}
+                          "leia": TipoToken.RES_LEIA, "esc": TipoToken.RES_ESCOPO}
         self.literal = {"Inteiro_classe": TipoToken.C_INTEIRO_CLASSE, "char_classe": TipoToken.C_CHAR_CLASSE,
                         "cadeia_classe": TipoToken.C_CADEIA_CHAR, "variavel_classe": TipoToken.C_VARIAVEL,
                         "Flutuante_classe": TipoToken.C_FLUTUANTE_CLASSE}
@@ -636,6 +779,7 @@ class PPR:
                 return True
         except:
             return False
+
 
     def cria_Token(self, tipoToken, lexema, linha, coluna):
 
@@ -675,4 +819,3 @@ class PPR:
             t.add_row([str(token.getLexema()), str(token.getLinha()), str(token.getColuna()), str("Sint. Ok!")])
         lista_Tokens.write(str(t))
         lista_Tokens.close()
-

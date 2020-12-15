@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="62ecb05e-e90c-4e9b-ad64-4f6b50f9941f" name="Default Changelist" comment="" />
+    <list default="true" id="62ecb05e-e90c-4e9b-ad64-4f6b50f9941f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/LexicoScan/Main_PPR.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LexicoScan/PPR.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/H.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/HashTable_Token.py" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/HashTable_Token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/LEIAME.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/TS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/criaTabela_Resultado.py" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/criaTabela_Resultado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/erro_rastreio.py" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/erro_rastreio.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/exemplos_para_analise/exemplo.lpd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/exemplos_para_analise/exemplo2.lpd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/exemplos_para_analise/test_prof.lpd" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/exemplos_para_analise/test_prof.lpd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/exemplos_para_analise/teste_de_erros.lpd" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/exemplos_para_analise/teste_de_erros.lpd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/lexico.py" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/lexico.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/lexicoMain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/resultados_analisados/H.lpd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/resultados_analisados/H.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/resultados_analisados/Hash_TS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/resultados_analisados/Hash_TS.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/resultados_analisados/Hash_Token.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/resultados_analisados/Hash_Token.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/resultados_analisados/lista_Tokens" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/resultados_analisados/lista_Tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/resultados_analisados/sequencia_Simbolos" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/resultados_analisados/sequencia_Simbolos" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/resultados_analisados/sequencia_Tokens" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/resultados_analisados/sequencia_Tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LexicoScan/tipoToken.py" beforeDir="false" afterPath="$PROJECT_DIR$/LexicoScan/tipoToken.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,11 +41,22 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1jNqfur2ftX8tuD7hplydkwgGsv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/LexicoScan" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Driel\Desktop\Analizador_lexico_compiladores_2020_2\LexicoScan" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Driel\Desktop\Analizador_lexico_compiladores_2020_2\LexicoScan" />
     </key>
@@ -49,7 +86,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LexicoScan/lexicoMain.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Driel\Desktop\Analizador_lexico_compiladores_2020_2\LexicoScan\Main_PPR.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -76,5 +113,32 @@
       <updated>1603655003917</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

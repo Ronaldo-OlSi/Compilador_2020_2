@@ -3,20 +3,24 @@ from enum import Enum
 class TipoToken(Enum):
 
     # Palavras reservadas da linguagem.
-
-    # RES_FIM = ("fim", "reservada")
     RES_BOOLEANO = ("booleano", "reservada")
     RES_INTEIRO = ("inteiro", "reservada")
     RES_CHAR = ("char", "reservada")
     RES_VERDADE = ("verdadeiro", "reservada")
     RES_FALSO = ("falso","reservada")
     RES_PROGRAMA = ("programa", "reservada")
+    RES_ESCOPO = ("esc", "reservada")
     RES_INICIO = ("inicio", "reservada")
     RES_ESCREVA = ("escreva", "reservada")
+    RES_LEIA = ("leia", "reservada")
     RES_ERROS = ("erros", "reservada")
     RES_SE = ("se", "reservada")
     RES_ENTAO = ("entao","reservada")
+    RES_SENAO = ("senao", "reservada")
     RES_ENQUANTO = ("enquanto", "reservada")
+    RES_FUNCAO = ("funcao", "reservada")
+    RES_PROCEDIMENTO = ("procedimento", "reservada")
+    RES_FACA = ("faca", "reservada")
     RES_IMPORTA = ("importa","reservada")
     RES_HERDA = ("herda_de", "reservada")
     RES_INSTANCIA_DE = ("instancia_de","reservada")
@@ -33,6 +37,8 @@ class TipoToken(Enum):
     RES_SUPERIOR = ("superior", "reservada")
     RES_DESTA = ("desta", "reservada")
     RES_VAZIO = ("vazio", "reservada")
+    RES_VAR_CAMPO = ("var", "reservada")
+    RES_FIM_PROGRAMA = ("fim", "reservada")
 
 	# Separadores de argumantos.
     S_VIRGULA = (",", "separador")
@@ -51,21 +57,27 @@ class TipoToken(Enum):
     O_MULTIPLICA = ("*", "operador")
     O_DIVISAO = ("/", "operador")
     O_IGUAL = ("==", "operador")
+    O_ATRIBUI = ("=", "operador")
     O_MAIOR = (">", "operador")
     O_MENOR = ("<", "operador")
     O_INCREMENTO = ("++", "operador")
-    O_E = ("&&", "operador")
     O_MENOR_IGUAL = ("<=", "operador")
     O_MAIOR_IGUAL = (">=", "operador")
     O_RECEBE_E_SOMA = ("+=", "operador")
     O_RECEBE_E_SUBTRAI = ("-=", "operador")
     O_NAO = ("!", "operador")
     O_DECREMENTO = ("--", "operador")
-    O_ATRIBUI = ("=", "operador")  #:= !!!!!!!!!!!!!!!!!!!!!!
-    O_OU = ("or", "operador")
+    O_OU = ("?", "operador")
+    O_E = ("&", "operador")
+    O_DE_TIPO = (":", "separador")
+    O_ATRIBUICAO = (":=", "reservada")
 
     # Variaveis gerais e classes de tipos.
     C_VARIAVEL = ("variavel_classe", "Variavel")
     C_CHAR_CLASSE = ("char_classe", "Char")
     C_CADEIA_CHAR = ("cadeia_classe", "String")
     C_INTEIRO_CLASSE = ("Inteiro_classe", "Int")
+    C_FLUTUANTE_CLASSE = ("Flutuante_classe", "Flt")
+    #C_COMENTARIO_CLASSE = ("Comentario_classe", "Flt")
+
+    # Os comentarios de linha são:   //    e   {{

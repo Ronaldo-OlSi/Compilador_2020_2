@@ -5,13 +5,18 @@ var
 	x, y, z: inteiro;
 	r: inteiro;
 
-{ "Este e um comentario" }
+{"Este e um comentario"}
 
 inicio 
 
+	escreva ("Este e uma string");
 	x := 3;
 	y := 5;
-	r := (x + 7) * y;
+	x2 := 3 + 9;
+	x2 := 7 - 5;
+	x2 := 8 / 4;
+	x2 := 3 * 2;
+	r := (x + 7);
 
     escreva r;
 	escreva 5;
